@@ -1,0 +1,59 @@
+<form class="form-inline clearfix well" name="filtro" id="filtro" method="POST" action="" >
+    <div class="pull-right">
+                    <div class="form-group">
+                        <label class="" for="anio">Filtros </label>
+                                  <!--   <select class="form-control" id="anio" name="anio">
+                                        <option value="">Año</option>
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option></select> -->
+                        <label class="sr-only" for="exampleInputEmail3">Registro</label>
+                        <input type="text" value="" placeholder="# Registro" class="form-control" id="filtro_registro" name="filtro_registro">
+                        <label class="sr-only" for="exampleInputEmail3">Nombre</label>
+                        <input type="text" value="" placeholder="Nombre..." class="form-control" id="filtro_nombre" name="filtro_nombre">
+                        <label class="sr-only" for="exampleInputEmail3">Email</label>
+                        <input type="text" value="" placeholder="Email..." class="form-control" id="filtro_email" name="filtro_email">
+<input type="submit" value="Buscar" class="btn btn-default" name="submit">
+                    </div>
+                </div>
+     </form> 
+<div class="panel panel-primary">
+    <div class="panel-heading">
+
+
+        <h3 class="panel-title">Registros <span class="btn btn-sm disabled">(Listando <?php echo $this->nregistros ?> registros)</span>
+
+            <?php if ($this->isAllowed('gestionRegistro', 'editar')) { ?>
+                <a class="btn btn-sm btn-success pull-right" href="/r/registro">
+                    <span class="glyphicon glyphicon-list-alt"></span> Crear Registro</a>
+            <?php } ?>
+            
+        </h3>
+
+
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th></th>
+            <th>Reg#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        <?php
+        $this->partialloop()->setObjectKey('registro');
+        echo $this->partialloop('/partial/rowRegistros', $this->registros)
+        ?>
+    </table>
+
+<?php echo ( count($this->registros) > 0 ) ? $this->paginationControl($this->registros, 'Sliding', '/partial/pager.phtml', array('lang' => $lang, 'controller' => 'r', 'action' => 'listado')) : ""; ?>
+</div>
+   
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$(".fancybox").fancybox();
+    });
+</script>

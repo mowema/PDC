@@ -1,0 +1,18 @@
+<tr> <td>
+    <?php if ($this->isAllowed('gestionRegistro', 'editar')) { ?>
+        <a title="Editar - <?php $this->registro->getId()?>" class="btn btn-warning" href="<?php echo $this->url('r',array('action'=>'registro', 'id' => $this->registro->getId()));?>">
+        <span class="glyphicon glyphicon-pencil"></span></a>
+        <?php } ?>
+   </td>
+    <td><?php echo $this->escapeHtml($this->registro->getNreg());?></td>
+    <td><?php echo $this->escapeHtml($this->registro->getNombre());?></td>
+    <td><?php echo $this->escapeHtml($this->registro->getEmail());?></td>
+     <td>   <?php if ($this->isAllowed('gestionRegistro', 'apapelera')) { ?>
+        <a class="btn btn-danger" title="Borrar" href="#" 
+            onclick="return MyDialogs.loadConfirmationModal('<?php echo $this->registro->getId() ?>',
+            '<?php echo $this->url('r', array('action' => 'apapelera', 'id' => $this->registro->getId()))?>', 
+                'El siguiente registro será eliminado', 
+                '<?php echo $this->registro->getNombre() ?>','');"><span class="glyphicon glyphicon-trash"></span>
+        </a>
+    <?php } ?></td>
+</tr>

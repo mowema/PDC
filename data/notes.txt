@@ -1,0 +1,35 @@
+crear un método en el repositorio
+confirmar que el repositorio está llamado en la entity
+pasar por parámetro el id que paso en el controlador al formulario
+
+http://stackoverflow.com/questions/21336877/form-select-parent-hydration
+
+http://stackoverflow.com/questions/21237367/how-to-use-doctinemodule-objectselect-based-on-custom-repository-method
+
+
+public function exclude(array $id) // o int?
+    {
+        $persister = $this->_em->getUnitOfWork()->getEntityPersister($this->_entityName);
+
+        return $persister->loadAll($criteria, $orderBy, $limit, $offset);
+    }
+    
+    
+    y después en el fieldset le declaro esto...
+    
+    'is_method'      => true,
+    'find_method'    => array(
+        'name'   => 'exclude',
+        'params' => array(
+            'id' => array(),
+        ),
+    ),
+    
+http://wildlyinaccurate.com/simple-nested-sets-in-doctrine-2
+http://leon.vankammen.eu/tech/storing-retrieving-hierarchical-trees-between-php-and-mysql.html
+
+
+http://www.phpbuilder.com/articles/databases/mysql/handling-hierarchical-data-in-mysql-and-php.html
+
+
+http://framework.zend.com/wiki/display/ZFDEV2/Coding+Standards

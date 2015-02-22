@@ -1,0 +1,91 @@
+<?php
+$formAcceso = $this->formAcceso;
+?>
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#acceso" aria-controls="acceso" role="tab" data-toggle="tab">
+                Acceder</a></li>
+        <li role="presentation"><a href="#inicia" aria-controls="inicia" role="tab" data-toggle="tab">
+                Iniciar Registro</a></li>
+        <li role="presentation"><a href="#solicod" aria-controls="solicod" role="tab" data-toggle="tab">
+                Solicitar código</a></li>
+        <li role="presentation"><a href="#buscar" aria-controls="buscar" role="tab" data-toggle="tab">
+                Buscar puntos de cultura</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="jumbotron tab-pane active" id="acceso">
+            <h4>Ingrese <i>email</i> y <i>código</i> de registro de su Punto de Cultura <br><small>(el código conciste en 32 caracteres entre números y letras)</small></h4>
+            <?php
+            // echo $this->ztbForm($formAcceso); 
+
+
+            echo $this->ztbForm($formAcceso);
+            ?> 
+        </div>
+        <div role="tabpanel" class="tab-pane jumbotron" id="inicia">
+            <h4>Bases y Condiciones: <br><small> Para registrar un Organismo como Punto de Cultura,<br>
+                    ingrese su email y el nombre de la Organización.</small></h4>
+            <?php
+            echo $this->ztbForm($formRegistro);
+            ?> 
+        </div>
+        <div role="tabpanel" class="jumbotron tab-pane" id="solicod">
+            <h4><small>En caso de que usted ya cuente con un registro en puntos de cultura,<br>ingrese su mail y le enviaremos el código de acceso.<br>
+            Copie el código que recibió por mail (código de 32 caracteres alfanuméricos)<br>y acceda por la primer solapa.
+                </small></h4>
+                        <?php
+            echo $this->ztbForm($formCodigo);
+            ?> 
+        </div>
+        <div role="tabpanel" class="jumbotron tab-pane" id="buscar">
+            <h4>Buscador Puntos de cultura</h4>
+            <?php
+            echo $this->ztbForm($formBuscar);
+            ?>
+            <table class="table"><thead><tr><th>Nombre</th><th>Responsable</th></tr></thead><tbody>
+                
+                    <?php if (is_array($this->busqueda)) {$this->partialloop()->setObjectKey('registro');
+                    echo $this->partialloop('rowBusquedaRegistros.phtml', $this->busqueda);} 
+                    else {
+                        echo '<tr><th>'.$this->busqueda.'</th><th>'.$this->busqueda.'</th><th>';
+                    } ?>
+                    
+                </tbody></table>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+(function () {
+'use strict';
+ 
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+var id = $(this).parents('[role="tablist"]').attr('id');
+var key = 'lastTag';
+if (id) {
+key += ':' + id;
+}
+ 
+localStorage.setItem(key, $(e.target).attr('href'));
+});
+ 
+$('[role="tablist"]').each(function (idx, elem) {
+var id = $(elem).attr('id');
+var key = 'lastTag';
+if (id) {
+key += ':' + id;
+}
+ 
+var lastTab = localStorage.getItem(key);
+if (lastTab) {
+$('[href="' + lastTab + '"]').tab('show');
+}
+});
+})(); 
+</script>
