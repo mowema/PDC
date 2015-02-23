@@ -64,6 +64,16 @@ class Registro {
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    protected $lon;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $lat;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $telefono;
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -574,7 +584,15 @@ class Registro {
     public function getLocalidad() {
         return $this->localidad;
     }
+    
+    public function getLon() {
+        return $this->lon;
+    }
 
+    public function getLat() {
+        return $this->lat;
+    }
+    
     public function getTelefono() {
         return $this->telefono;
     }
@@ -994,6 +1012,15 @@ class Registro {
         $this->localidad = $localidad;
         return $this;
     }
+    
+    public function setLon($lon) {
+        $this->lon = $lon;
+    }
+
+    public function setLat($lat) {
+        $this->lat = $lat;
+    }
+
 
     public function setTelefono($telefono) {
         $this->telefono = $telefono;
@@ -1688,6 +1715,8 @@ class Registro {
         $this->provincia = $data['provincia'];
         $this->cpostal = $data['cpostal'];
         $this->localidad = $data['localidad'];
+        $this->lon = $data['lon'];
+        $this->lat = $data['lat'];
         $this->telefono = $data['telefono'];
         $this->movil = $data['movil'];
         $this->email = $data['email'];

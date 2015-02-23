@@ -68,9 +68,8 @@ return array(
     "'%value%' is an empty string" => "'%value%' es una cadena vacía",
     
     // Zend_Validator_Csrf
-    "The form submitted did not originate from the expected site" => "El formulario no se genero en el sitio? Intente guardar nuevamente",
+    "The form submitted did not originate from the expected site" => "Navegó fuera del formulario o demoró demasiado?!? Intente nuevamente.",
 
-    
     // Zend\Validator\Date
     "Invalid type given. String, integer, array or DateTime expected" => "Tipo incorrecto",
     "The input does not appear to be a valid date" => "Lo ingresado no tiene formato de fecha",

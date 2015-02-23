@@ -48,7 +48,7 @@ class RegistroFieldset extends Fieldset implements InputFilterProviderInterface 
                 ),
                 'empty_option' => 'Provincia...',
                 'value_options' => array(
-                    'Buenos Aires' => 'Gran Buenos Aires',
+                    'Buenos Aires' => 'Buenos Aires',
                     'ciudad autonoma de buenos aires' => 'CABA',
                     'Catamarca' => 'Catamarca',
                     'Chaco' => 'Chaco',
@@ -72,9 +72,6 @@ class RegistroFieldset extends Fieldset implements InputFilterProviderInterface 
                     'Santiago del Estero' => 'Santiago del Estero',
                     'Tierra del Fuego' => 'Tierra del Fuego',
                     'Tucumán' => 'Tucumán'
-        
-        
-        
                 ),
             )
         ));
@@ -84,6 +81,8 @@ class RegistroFieldset extends Fieldset implements InputFilterProviderInterface 
             array('nreg', 'Número de registro'),
             array('nombre', 'Nombre de Organización'),
             array('localidad', 'Localidad'),
+            array('lon', 'Geo Lon'),
+            array('lat', 'Geo Lat'),
             array('direccion', 'Dirección'),
             array('cpostal', 'C. Postal'),
             array('telefono', 'Teléfono Fijo'),
@@ -106,7 +105,7 @@ class RegistroFieldset extends Fieldset implements InputFilterProviderInterface 
             array('creado', 'Año de creación'),
                         
             array('cantIntegrantes', 'Cantidad de Integrantes'),
-            array('cantMilitantes', 'Cantidad de Voluntarios Militantes'),
+            array('cantMilitantes', 'Cantidad de Voluntarios/Militantes'),
             array('cantProfesionales', 'Cantidad de Profesionales Rentados'),
             array('cantOcacionales', 'Cantidad de Colaboradores Ocasionales o para Proyectos Específicos'),
             
